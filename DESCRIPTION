@@ -15,3 +15,5 @@ Imports:
     tibble,
     tidyr,
     tidyselect
+Suggests: 
+    covr
