@@ -2,5 +2,4 @@
 
 export(mutate_rows)
 export(split_groups)
-importFrom(magrittr,"%<>%")
 importFrom(magrittr,"%>%")
