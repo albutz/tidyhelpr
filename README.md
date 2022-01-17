@@ -7,8 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test
-coverage](https://codecov.io/gh/albutz/tidyhelpr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/albutz/tidyhelpr?branch=master)
+[![codecov](https://codecov.io/gh/albutz/tidyhelpr/branch/master/graph/badge.svg?token=VG9ZEVFVXP)](https://codecov.io/gh/albutz/tidyhelpr)
 <!-- badges: end -->
 
 The tidyhelpr package is a conglomeration of useful helper function for
