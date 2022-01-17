@@ -12,4 +12,6 @@ Imports:
     dplyr,
     purrr,
     rlang,
-    tibble
+    tibble,
+    tidyr,
+    tidyselect
