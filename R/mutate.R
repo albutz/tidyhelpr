@@ -12,7 +12,7 @@
 #' @return A \code{\link[tibble]{tibble}}.
 #' @export
 #'
-#' @importFrom magrittr %>% %<>%
+#' @importFrom magrittr %>%
 #'
 #' @examples
 #' mutate_rows(
@@ -24,17 +24,16 @@
 #'   y = y + 1,
 #'   z = y + 1
 #' )
-#'
 mutate_rows <- function(.df, .p, ...) {
   .p_eval <- rlang::eval_tidy(rlang::enquo(.p), .df)
-  .dots <-rlang::enquos(..., .ignore_empty = "all")
+  .dots <- rlang::enquos(..., .ignore_empty = "all")
   .vars <- rlang::names2(.dots)
 
   .vars_old <- purrr::keep(.vars, .vars %in% rlang::names2(.df))
   .vars_new <- purrr::discard(.vars, .vars %in% rlang::names2(.df))
 
   if (rlang::has_length(.vars_old)) {
-    .df[.p_eval, ] %<>% dplyr::mutate(!!!.dots[.vars_old])
+    .df[.p_eval, ] <- dplyr::mutate(.df[.p_eval, ], !!!.dots[.vars_old])
   }
 
   if (rlang::has_length(.vars_new)) {
@@ -51,7 +50,7 @@ mutate_rows <- function(.df, .p, ...) {
       .df_aug[!.p_eval, ] <- NA
     }
 
-    .df %<>% dplyr::bind_cols(.df_aug)
+    .df <- dplyr::bind_cols(.df, .df_aug)
   }
 
   return(.df)
