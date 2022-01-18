@@ -13,15 +13,10 @@
 #' @examples
 #' split_groups(
 #'   datasets::iris,
-#'   "Species"
+#'   Species
 #' )
-split_groups <- function(.df, .group_vars) {
-  .df_grouped <- .df
-
-  for (.group in .group_vars) {
-    .df_grouped <- .df_grouped %>%
-      dplyr::group_by(!!rlang::sym(.group), .add = TRUE)
-  }
+split_groups <- function(.df, ...) {
+  .df_grouped <- dplyr::group_by(.df, ...)
 
   .keys <- dplyr::group_keys(.df_grouped) %>%
     # Combine multiple columns as each group key gets a separate column

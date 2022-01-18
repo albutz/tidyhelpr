@@ -4,7 +4,7 @@
 \alias{split_groups}
 \title{Split by group and name by group key}
 \usage{
-split_groups(.df, .group_vars)
+split_groups(.df, ...)
 }
 \arguments{
 \item{.df}{A \code{\link[tibble]{tibble}}.}
@@ -22,6 +22,6 @@ with the group keys.
 \examples{
 split_groups(
   datasets::iris,
-  "Species"
+  Species
 )
 }

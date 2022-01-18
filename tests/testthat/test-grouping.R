@@ -3,7 +3,7 @@ test_that("split_groups with a single grouping variable", {
     janitor::clean_names() %>%
     dplyr::slice(c(1, 25, 51, 75, 101, 120))
 
-  data_split <- split_groups(data, "species")
+  data_split <- split_groups(data, species)
 
   data_exp <- list(
     setosa = tibble::tibble(
@@ -43,7 +43,7 @@ test_that("split_groups with multiple grouping variables", {
     ) %>%
     dplyr::slice(c(7:9, 14:15, 26:28))
 
-  data_split <- split_groups(data, c("manufacturer", "transmission_type"))
+  data_split <- split_groups(data, manufacturer, transmission_type)
 
   data_exp <- list(
     `german + automatic` = tibble::tribble(
