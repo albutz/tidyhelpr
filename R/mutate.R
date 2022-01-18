@@ -7,6 +7,8 @@
 #'
 #' @param .df A \code{\link[tibble]{tibble}}.
 #' @param .p A predicate function.
+#' @param .ignore_na Should NA values in the evaluation of the predicate
+#'   function be ignored? Defaults to \code{FALSE}.
 #' @param ... Name-value pairs passed to \code{\link[dplyr]{mutate}}.
 #'
 #' @return A \code{\link[tibble]{tibble}}.
@@ -24,8 +26,23 @@
 #'   y = y + 1,
 #'   z = y + 1
 #' )
-mutate_rows <- function(.df, .p, ...) {
+mutate_rows <- function(.df, .p, .ignore_na = FALSE, ...) {
   .p_eval <- rlang::eval_tidy(rlang::enquo(.p), .df)
+
+  if (any(is.na(.p_eval))) {
+    .msg <- glue::glue(
+      "Evaluating the predicate function resulted in NA values at index
+       {which(is.na(.p_eval))}."
+    )
+    if (.ignore_na) {
+      # work with index
+      .p_eval <- which(.p_eval[!is.na(.p_eval)])
+      rlang::warn(.msg)
+    } else {
+      rlang::abort(.msg)
+    }
+  }
+
   .dots <- rlang::enquos(..., .ignore_empty = "all")
   .vars <- rlang::names2(.dots)
 

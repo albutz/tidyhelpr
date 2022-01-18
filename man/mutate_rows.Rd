@@ -4,12 +4,15 @@
 \alias{mutate_rows}
 \title{Extension of \code{\link[dplyr]{mutate}} by a predicate function}
 \usage{
-mutate_rows(.df, .p, ...)
+mutate_rows(.df, .p, .ignore_na = FALSE, ...)
 }
 \arguments{
 \item{.df}{A \code{\link[tibble]{tibble}}.}
 
 \item{.p}{A predicate function.}
+
+\item{.ignore_na}{Should NA values in the evaluation of the predicate
+function be ignored? Defaults to \code{FALSE}.}
 
 \item{...}{Name-value pairs passed to \code{\link[dplyr]{mutate}}.}
 }
