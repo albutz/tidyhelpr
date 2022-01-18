@@ -3,9 +3,9 @@ test_that("split_groups with a single grouping variable", {
     janitor::clean_names() %>%
     dplyr::slice(c(1, 25, 51, 75, 101, 120))
 
-  data_split <- split_groups(data, species)
+  res_act <- split_groups(data, species)
 
-  data_exp <- list(
+  res_exp <- list(
     setosa = tibble::tibble(
       sepal_length = c(5.1, 4.8),
       sepal_width = c(3.5, 3.4),
@@ -26,7 +26,7 @@ test_that("split_groups with a single grouping variable", {
     )
   )
 
-  expect_equal(data_split, data_exp, ignore_attr = TRUE)
+  expect_equal(res_act, res_exp, ignore_attr = TRUE)
 })
 
 test_that("split_groups with multiple grouping variables", {
@@ -43,9 +43,9 @@ test_that("split_groups with multiple grouping variables", {
     ) %>%
     dplyr::slice(c(7:9, 14:15, 26:28))
 
-  data_split <- split_groups(data, manufacturer, transmission_type)
+  res_act <- split_groups(data, manufacturer, transmission_type)
 
-  data_exp <- list(
+  res_exp <- list(
     `german + automatic` = tibble::tribble(
       ~model, ~mpg, ~cyl, ~disp, ~hp, ~drat, ~wt, ~qsec, ~vs, ~am, ~gear, ~carb,
       "Merc 240D", 24.4, 4, 146.7, 62, 3.69, 3.19, 20, 1, 0, 4, 2,
@@ -68,5 +68,5 @@ test_that("split_groups with multiple grouping variables", {
     )
   )
 
-  expect_equal(data_split, data_exp, ignore_attr = TRUE)
+  expect_equal(res_act, res_exp, ignore_attr = TRUE)
 })
