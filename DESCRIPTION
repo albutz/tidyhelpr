@@ -10,12 +10,14 @@ Imports:
     glue,
     janitor,
     purrr,
+    readr,
     rlang,
     stringr,
     tibble,
     tidyr,
     tidyselect
 Suggests: 
+    fs,
     covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
