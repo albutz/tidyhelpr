@@ -51,47 +51,47 @@ test_that("locate_pattern if pattern is not found", {
   expect_error(locate_pattern(lines, "^&"))
 })
 
-test_that("split_lines if pattern is found in first line", {
+test_that("subset_lines if pattern is found in first line", {
   lines <- c(
     "some, ||| random, &$text",
-    "'to, %§test, 'split_lines'",
+    "'to, %§test, 'subset_lines'",
     "IN, !tidyhelpr!, "
   )
   temp_file <- fs::file_temp()
   writeLines(lines, temp_file)
 
   expect_equal(
-    split_lines(temp_file, "&", readr::locale(encoding = "UTF-8")),
+    subset_lines(temp_file, "&", readr::locale(encoding = "UTF-8")),
     lines
   )
 })
 
-test_that("split_lines if pattern is found inbetween", {
+test_that("subset_lines if pattern is found inbetween", {
   lines <- c(
     "some, ||| random, &$text",
-    "'to, %§test, 'split_lines'",
+    "'to, %§test, 'subset_lines'",
     "IN, !tidyhelpr!, "
   )
   temp_file <- fs::file_temp()
   writeLines(lines, temp_file)
 
   expect_equal(
-    split_lines(temp_file, "^\\'", readr::locale(encoding = "UTF-8")),
-    c("'to, %§test, 'split_lines'", "IN, !tidyhelpr!, ")
+    subset_lines(temp_file, "^\\'", readr::locale(encoding = "UTF-8")),
+    c("'to, %§test, 'subset_lines'", "IN, !tidyhelpr!, ")
   )
 })
 
-test_that("split_lines if pattern is found in last line", {
+test_that("subset_lines if pattern is found in last line", {
   lines <- c(
     "some, ||| random, &$text",
-    "'to, %§test, 'split_lines'",
+    "'to, %§test, 'subset_lines'",
     "IN, !tidyhelpr!, "
   )
   temp_file <- fs::file_temp()
   writeLines(lines, temp_file)
 
   expect_length(
-    split_lines(temp_file, "!tidy*", readr::locale(encoding = "UTF-8")),
+    subset_lines(temp_file, "!tidy*", readr::locale(encoding = "UTF-8")),
     0
   )
 })
