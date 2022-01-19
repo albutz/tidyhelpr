@@ -9,6 +9,7 @@ Imports:
     dplyr,
     glue,
     janitor,
+    magrittr,
     purrr,
     readr,
     rlang,
