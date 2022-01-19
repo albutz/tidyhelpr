@@ -5,10 +5,12 @@
 #' with the group keys.
 #'
 #' @param .df A \code{\link[tibble]{tibble}}.
-#' @param .group_vars The column names to group by.
+#' @param ... Variables to group by.
 #'
 #' @return A list of \code{\link[tibble]{tibble}}s split by group named by keys.
 #' @export
+#'
+#' @importFrom rlang .data
 #'
 #' @examples
 #' split_groups(

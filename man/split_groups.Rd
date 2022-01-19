@@ -9,7 +9,7 @@ split_groups(.df, ...)
 \arguments{
 \item{.df}{A \code{\link[tibble]{tibble}}.}
 
-\item{.group_vars}{The column names to group by.}
+\item{...}{Variables to group by.}
 }
 \value{
 A list of \code{\link[tibble]{tibble}}s split by group named by keys.
