@@ -7,7 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![codecov](https://codecov.io/gh/albutz/tidyhelpr/branch/master/graph/badge.svg?token=VG9ZEVFVXP)](https://codecov.io/gh/albutz/tidyhelpr)
+[![R-CMD-check](https://github.com/albutz/tidyhelpr/workflows/R-CMD-check/badge.svg)](https://github.com/albutz/tidyhelpr/actions)
 <!-- badges: end -->
 
 The tidyhelpr package is a conglomeration of useful helper function for
@@ -28,12 +28,12 @@ At the moment, tidyhelpr includes the following functions:
     are wrangled.
 
 -   `split_groups()` is a wrapper for `dplyr::group_split()` and names
-    the list elements by the group keys. It also allows for more than
-    one group and concatenates the individual keys.
+    the list elements by the group keys. It allows for more than one
+    group and concatenates the individual keys.
 
 -   Ever had the struggle of reading in a csv file and realizing the
     relevant part starts only in line 1245? Then `read_sub()` is your
-    friend as it lets you find the pattern for identifying the start
+    friend: it lets you find the pattern for identifying the start
     point, splits lines and reads the relevant part via
     `readr::read_delim()`.
 

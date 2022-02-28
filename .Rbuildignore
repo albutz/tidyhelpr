@@ -6,3 +6,4 @@
 ^README\.Rmd$
 ^codecov\.yml$
 ^\.pre-commit-config\.yaml$
+^\.github$
