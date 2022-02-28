@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![codecov](https://codecov.io/gh/albutz/tidyhelpr/branch/master/graph/badge.svg?token=VG9ZEVFVXP)](https://codecov.io/gh/albutz/tidyhelpr)
+[![R-CMD-check](https://github.com/albutz/tidyhelpr/workflows/R-CMD-check/badge.svg)](https://github.com/albutz/tidyhelpr/actions)
 <!-- badges: end -->
 
 The tidyhelpr package is a conglomeration of useful helper function for data wrangling with the tidyverse. It is (and per se will always be) work in progress as I add a function if 
