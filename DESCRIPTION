@@ -13,6 +13,7 @@ Imports:
     purrr,
     readr,
     rlang,
+    stringi,
     stringr,
     tibble,
     tidyr,
@@ -20,7 +21,8 @@ Imports:
 Suggests: 
     fs,
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
