@@ -14,8 +14,6 @@
 #' @return A \code{\link[tibble]{tibble}}.
 #' @export
 #'
-#' @importFrom magrittr %>%
-#'
 #' @examples
 #' mutate_rows(
 #'   tibble::tibble(
@@ -57,7 +55,7 @@ mutate_rows <- function(.df, .p, .ignore_na = FALSE, ...) {
     .missing_expr <- purrr::map(
       .vars_new,
       ~ rlang::quo_get_expr(.dots[[.x]])
-    ) %>%
+    ) |>
       rlang::set_names(.vars_new)
 
     .df_aug <- tibble::tibble(.rows = nrow(.df))

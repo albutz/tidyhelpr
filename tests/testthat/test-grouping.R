@@ -1,6 +1,6 @@
 test_that("split_groups with a single grouping variable", {
-  data <- datasets::iris %>%
-    janitor::clean_names() %>%
+  data <- datasets::iris |>
+    janitor::clean_names() |>
     dplyr::slice(c(1, 25, 51, 75, 101, 120))
 
   res_act <- split_groups(data, species)
@@ -30,9 +30,9 @@ test_that("split_groups with a single grouping variable", {
 })
 
 test_that("split_groups with multiple grouping variables", {
-  data <- datasets::mtcars %>%
-    janitor::clean_names() %>%
-    tibble::rownames_to_column("model") %>%
+  data <- datasets::mtcars |>
+    janitor::clean_names() |>
+    tibble::rownames_to_column("model") |>
     dplyr::mutate(
       manufacturer = dplyr::if_else(
         stringr::str_starts(.data$model, "([Mm]erc)|(Porsche)"),
@@ -40,7 +40,7 @@ test_that("split_groups with multiple grouping variables", {
         "not german"
       ),
       transmission_type = dplyr::if_else(.data$am == 1, "manual", "automatic")
-    ) %>%
+    ) |>
     dplyr::slice(c(7:9, 14:15, 26:28))
 
   res_act <- split_groups(data, manufacturer, transmission_type)

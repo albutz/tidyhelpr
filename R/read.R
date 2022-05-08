@@ -8,8 +8,8 @@
 #'
 guess_locale <- function(.file) {
   .candidates <- readr::guess_encoding(.file, n_max = -1)
-  .buest_guess <- dplyr::slice_max(.candidates, .data$confidence) %>%
-    dplyr::pull(.data$encoding)
+  .buest_guess <- dplyr::slice_max(.candidates, !!rlang::sym("confidence")) |>
+    dplyr::pull(!!rlang::sym("encoding"))
   .locale <- readr::locale(encoding = .buest_guess)
 
   return(.locale)
@@ -91,10 +91,10 @@ subset_lines <- function(.file, .pattern, .locale) {
 #'   "y,x_1,x_2",
 #'   "1,low,0.989",
 #'   "0,medium,-1.923"
-#'  )
-#'  temp_file <- tempfile()
-#'  writeLines(lines, temp_file)
-#'  read_sub(temp_file, "(?=.*y)(?=.*x_1)(?=.*x_2)")
+#' )
+#' temp_file <- tempfile()
+#' writeLines(lines, temp_file)
+#' read_sub(temp_file, "(?=.*y)(?=.*x_1)(?=.*x_2)")
 #'
 read_sub <- function(.file, .pattern = NULL, .delim = ",", ...) {
   .locale <- guess_locale(.file)
@@ -105,7 +105,7 @@ read_sub <- function(.file, .pattern = NULL, .delim = ",", ...) {
     .lines <- readr::read_lines(.file, locale = .locale)
   }
 
-  .tbl <- readr::read_delim(I(.lines), .delim, ...) %>%
+  .tbl <- readr::read_delim(I(.lines), .delim, ...) |>
     janitor::clean_names()
 
   return(.tbl)
