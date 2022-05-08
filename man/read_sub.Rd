@@ -33,9 +33,9 @@ lines <- c(
   "y,x_1,x_2",
   "1,low,0.989",
   "0,medium,-1.923"
- )
- temp_file <- tempfile()
- writeLines(lines, temp_file)
- read_sub(temp_file, "(?=.*y)(?=.*x_1)(?=.*x_2)")
+)
+temp_file <- tempfile()
+writeLines(lines, temp_file)
+read_sub(temp_file, "(?=.*y)(?=.*x_1)(?=.*x_2)")
 
 }
