@@ -30,12 +30,12 @@ random_tibble <- function(.col_names,
       .col_names,
       function(.col) {
         tibble::tibble(
-          stringi::stri_rand_lipsum(1) %>%
-            stringr::str_split(pattern = " ") %>%
-            purrr::flatten_chr() %>%
-            stringr::str_subset(pattern = "[^A-Za-z]", negate = TRUE) %>%
+          stringi::stri_rand_lipsum(1) |>
+            stringr::str_split(pattern = " ") |>
+            purrr::flatten_chr() |>
+            stringr::str_subset(pattern = "[^A-Za-z]", negate = TRUE) |>
             sample(size = .n_rows, replace = TRUE)
-        ) %>%
+        ) |>
           rlang::set_names(.col)
       }
     )
