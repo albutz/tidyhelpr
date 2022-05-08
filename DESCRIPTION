@@ -1,15 +1,16 @@
 Package: tidyhelpr
-Title: What the Package Does (One Line, Title Case)
+Title: Helper functions for data wrangling with the tidyverse
 Version: 0.0.0.9000
 Authors@R: 
     person("Alexander", "Butz", , "alexander.butz@statworx.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: The tidyhelpr package is a conglomeration of useful helper function for data wrangling with the tidyverse. 
+    It is (and per se will always be) work in progress as a function is added if roughly the same helper function is 
+    used in multiple (non-related) projects and the function is nontrivial.
 License: MIT + file LICENSE
 Imports: 
     dplyr,
     glue,
     janitor,
-    magrittr,
     purrr,
     readr,
     rlang,
